@@ -8,7 +8,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var dato = "Hola";
+  var dato = "";
+  var dato2 = "";
+  var resultado = "0";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,34 @@ class _HomeState extends State<Home> {
                   dato = texto;
                 });
               }),
-              Text(dato)
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  onChanged: (texto) {
+                    setState(() {
+                      dato2 = texto;
+                    });
+                  },
+                  decoration: InputDecoration(
+                      labelText: "Mete un dato",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(),
+                      )),
+                ),
+              ),
+              Text(dato),
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      resultado = "$dato - $dato2";
+                    });
+                  },
+                  child: Text("Calcular")),
+              Text(
+                resultado,
+                style: TextStyle(fontSize: 30),
+              )
             ],
           ),
         ));
