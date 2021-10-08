@@ -83,7 +83,17 @@ class LoginPage extends StatelessWidget {
                   },
                 );
 
+                final snackBar = SnackBar(
+                    content: Text("Introduzca un correo"),
+                    action: SnackBarAction(
+                      label: "Cerrar",
+                      onPressed: () {
+                        print("SnackBar");
+                      },
+                    ));
+
                 if (email == "") {
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   showDialog(
                       context: context,
                       builder: (context) {
